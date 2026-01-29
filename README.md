@@ -31,26 +31,32 @@ The project is split into a Flutter mobile client and a Python backend to handle
 
 ### **Installation**
 
-**1. Backend Setup**
-```bash
-cd python
-pip install -r requirements.txt
-```
+**1. Backend Setup (PocketBase & Dagster)**
 
-Update the `POCKETBASE_URL` and admin credentials in `training_pipeline.py`. Launch the Dagster webserver:
-```bash
-dagster dev -f training_pipeline.py
-```
+1. Start a local PocketBase instance:
+
+    Follow the instructions in [PocketBase Installation Guide](docs/pocketbase_install.md) and [PocketBase Setup Guide](docs/pocketbase_setup.md).
+2. Navigate to the `python/` directory and install dependencies:
+
+    ```bash
+    cd python
+    pip install -r requirements.txt
+    ```
+
+    Update the `POCKETBASE_URL` and admin credentials in `training_pipeline.py`. Launch the Dagster webserver:
+    ```bash
+    dagster dev -f training_pipeline.py
+    ```
 **2. Flutter Setup**
 1. Add the `dinov3_feature_extractor.onnx` to `assets/`.
 
 2. Update `kPocketBaseUrl` in `lib/services/pocketbase_service.dart` to match your local IP.
 
 3. Install dependencies and run:
-```bash
-flutter pub get
-flutter run
-```
+    ```bash
+    flutter pub get
+    flutter run
+    ```
 
 ## 📱 Workflow
 **1. Capture Data:** Use the **Model Manager** screen to upload photos of an object. Use images with transparent backgrounds (created via the [Object Mask App](https://github.com/IoT-gamer/flutter_segment_anything_app)).
